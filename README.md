@@ -4,11 +4,34 @@ Docker images for local development
 
 To build an image run:
 
+Now you need to use buildx:
+
 ```
-docker build -t myimage --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) php
- ```
+sudo apt install docker-buildx
+```
+
+```
+# docker buildx build --tag tag_name path
+
+#Real example:
+
+docker buildx build --tag my_image:1.0 folder/Dockerfile
+```
+
+or if you need to pass arguments then:
+
+```
+docker buildx build --tag myimage:1.0 --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) folder/Dockerfile
+
+```
 
 Note: build time arguments are mandatory. Otherwise image will not build.
+
+Alternative way to build (may not work):
+
+```
+docker build --file path_to/Dockerfile --tag myimage . 
+```
 
 ---
 
@@ -26,7 +49,6 @@ source: https://linuxhint.com/diff_apt_vs_aptget/
 ---
 
 Docker image building issues (resolved):
-
 1) https://github.com/docker-library/php/issues/61
 
 2) https://vsupalov.com/docker-shared-permissions/

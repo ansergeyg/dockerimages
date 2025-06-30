@@ -23,7 +23,7 @@ RUN apt-get install -y \
 RUN docker-php-ext-install zip
 
 # By default docker image is looking at the /var/www/html folder
-# We need to chage it to our directory, so next time we log in to container shell
+# We need to change it to our directory, so next time we log in to container shell
 # We will see our working directory from host
 # You can replace it in the dockre-compose file with working_dir property
 
@@ -38,7 +38,7 @@ RUN sed -ri -e 's!/var/www/html!${DOCUMENT_ROOT}!g' /etc/apache2/sites-available
 RUN sed -ri -e 's!/var/www/!${DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 
-# We resove container/host file permission issues by feeding the host user to container
+# We resolve container/host file permission issues by feeding the host user to container
 
 ARG USER_ID
 ARG GROUP_ID
