@@ -1,4 +1,4 @@
-FROM fpfis/httpd-php-dev:7.4
+FROM registry.fpfis.eu/digit/devsecops/httpd-php:8.3-dev
 
 # Install ssh to use git in the container
 
